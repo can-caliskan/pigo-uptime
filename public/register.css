@@ -1,0 +1,25 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.card {
+    border-radius: 15px;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.error {
+    color: red;
+    margin-bottom: 1rem;
+}
+
+.btn {
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}

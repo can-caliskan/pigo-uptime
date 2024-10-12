@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kullanıcı Sayfası</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="uptime.css"> <!-- Özel stil dosyası -->
+    <style>
+        /* Taşmayı önlemek için genel stil ayarları */
+        body {
+            overflow-x: hidden; /* Yatay kaydırmayı gizler */
+        }
+        .card-body {
+            padding: 20px; /* Kart içindeki alanları artırır */
+        }
+        .list-group-item {
+            word-wrap: break-word; /* Uzun kelimelerin satır sonunda kırılmasını sağlar */
+        }
+        .form-control {
+            min-width: 0; /* Form kontrolünün en küçük genişliğini sıfırlar */
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="text-center">Hoş Geldiniz, <%= user.username %>!</h1>
+            <!-- Çıkış yapma butonu -->
+            <form action="/logout" method="post">
+                <button type="submit" class="btn btn-danger">Çıkış Yap</button>
+            </form>
+        </div>
+
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <h2 class="mb-4">Link Ekle</h2>
+                <% if (error) { %>
+                    <div class="alert alert-danger"><%= error %></div>
+                <% } %>
+                <form method="post" action="/user/<%= user._id %>" class="d-flex justify-content-center">
+                    <input class="form-control w-75 me-2" name="link" type="text" placeholder="Linkinizi Giriniz" required>
+                    <button type="submit" class="btn btn-info"><i class="fa-solid fa-magnifying-glass-plus"></i> Ekle</button>
+                </form>
+            </div>
+        </div>
+
+        <h2 class="mt-4">Eklemiş Olduğunuz Linkler</h2>
+        <ul class="list-group mb-4">
+            <% links.forEach(link => { %>
+                <li class="list-group-item">
+                    <p>Bağlantı: <a href="<%= link.link %>" target="_blank" style="word-break: break-all;"><%= link.link %></a></p>
+                    <p>Ping Süresi: <%= link.pingTime !== undefined ? link.pingTime + ' ms' : 'N/A' %></p>
+                    <form action="/user/<%= user._id %>/link/<%= link._id %>?_method=DELETE" method="POST" style="display:inline;">
+                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Sil</button>
+                    </form>
+                </li>
+            <% }); %>
+        </ul>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
