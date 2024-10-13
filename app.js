@@ -58,7 +58,7 @@ const interval = setInterval(() => {
 
 // Kullanıcı giriş kontrolü middleware
 const ensureAuthenticated = (req, res, next) => {
-  if (req.session.userId) {
+  if (req.session && req.session.userId) {
     return next();
   }
   res.redirect('/login');
@@ -120,7 +120,7 @@ app.post('/login', async (req, res) => {
   try {
     const result = await User.findOne({ username: req.body.username, password: req.body.password });
     if (result) {
-      req.session.userId = result._id;
+      req.session.userId = result._id; // Kullanıcı ID'sini oturuma kaydet
       return res.redirect(`/user/${result._id}`);
     }
     res.render("login", { error: `Böyle bir kullanıcı yok.` });
@@ -129,7 +129,6 @@ app.post('/login', async (req, res) => {
     res.render("login", { error: "Bir hata oluştu." });
   }
 });
-
 
 // Çıkış yapma işlemi
 app.post('/logout', (req, res) => {
@@ -239,8 +238,6 @@ const isValidUrl = (url) => {
 
   return !!pattern.test(url);
 };
-
-
 
 // Sunucuyu başlat
 app.listen(port, () => {
