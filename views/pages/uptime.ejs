@@ -46,18 +46,20 @@
             </div>
         </div>
 
-        <h2 class="mt-4">Eklemiş Olduğunuz Linkler</h2>
-        <ul class="list-group mb-4">
-            <% links.forEach(link => { %>
-                <li class="list-group-item">
-                    <p>Bağlantı: <a href="<%= link.link %>" target="_blank" style="word-break: break-all;"><%= link.link %></a></p>
-                    <p>Ping Süresi: <%= link.pingTime !== undefined ? link.pingTime + ' ms' : 'N/A' %></p>
-                    <form action="/user/<%= user._id %>/link/<%= link._id %>?_method=DELETE" method="POST" style="display:inline;">
-                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Sil</button>
-                    </form>
-                </li>
-            <% }); %>
-        </ul>
+        <% if (links.length > 0) { %>
+            <h2 class="mt-4">Eklemiş Olduğunuz Linkler</h2>
+            <ul class="list-group mb-4">
+                <% links.forEach(link => { %>
+                    <li class="list-group-item">
+                        <p>Bağlantı: <a href="<%= link.link %>" target="_blank" style="word-break: break-all;"><%= link.link %></a></p>
+                        <p>Ping Süresi: <%= link.pingTime !== undefined ? link.pingTime + ' ms' : 'Ping Süresi Yok' %></p>
+                        <form action="/user/<%= user._id %>/link/<%= link._id %>?_method=DELETE" method="POST" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Sil</button>
+                        </form>
+                    </li>
+                <% }); %>
+            </ul>
+        <% } %>
 
     </div>
 
