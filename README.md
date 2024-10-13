@@ -22,7 +22,7 @@ npm install
 ### 3. .env Dosyasını Oluşturun
 
 Proje kök dizininde bir .env dosyası oluşturun ve aşağıdaki gibi MongoDB bağlantı URL'sini ekleyin:
-MONGODB_URI=mongodb+srv://KULLANICI_ADI:ŞİFRE@HOST/test?retryWrites=true&w=majority
+MONGODB_URI=mongodb://<kullanıcı_adı>:<şifre>@<sunucu_adresi>:<port>/<veritabanı_adı>?<query_parametreleri>
 
 ### 4. Uygulamayı Başlatın
 
