@@ -1,7 +1,7 @@
 {
-  "name": "glitch-hello-node",
+  "name": "uptime-site",
   "version": "0.1.0",
-  "description": "A simple Node app built on fastify, instantly up and running. Built to be remixed on Glitch.com.",
+  "description": "Uptime izleme ve yönetim uygulaması.",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
@@ -31,12 +31,13 @@
     "node": "16.x"
   },
   "repository": {
-    "url": "https://glitch.com/edit/#!/glitch-hello-node"
+    "url": "https://github.com/can-caliskan/uptime"  
   },
   "license": "MIT",
   "keywords": [
     "node",
-    "glitch",
+    "uptime",
+    "monitoring",
     "express"
   ]
 }
