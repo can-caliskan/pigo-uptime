@@ -1,6 +1,6 @@
 # Uptime Sitesi
 
-Bu proje, web sitelerinin uptime (çalışma süresi) takibi yapmayı sağlayan basit bir uygulamadır. Kullanıcılar, izlemek istedikleri bağlantıları ekleyebilir ve bu bağlantıların ping sürelerini görüntüleyebilir.
+Bu proje, web sitelerinin uptime (çalışma süresi) takibi yapmayı sağlayan basit bir uygulamadır. Kullanıcılar, uptime etmek istedikleri bağlantıları ekleyebilir ve bu bağlantıların ping sürelerini görüntüleyebilir.
 
 ## Özellikler
 
